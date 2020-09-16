@@ -1,0 +1,128 @@
+#!/bin/sh
+#
+#
+
+# Extract (almost) any archive format
+extract() {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)        tar xjf $1        ;;
+      *.tar.gz)         tar xzf $1        ;;
+      *.bz2)            bunzip2 $1        ;;
+      *.rar)            unrar x $1        ;;
+      *.gz)             gunzip $1         ;;
+      *.tar)            tar xf $1         ;;
+      *.tbz2)           tar xjf $1        ;;
+      *.tgz)            tar xzf $1        ;;
+      *.zip)            unzip $1          ;;
+      *.jar)            unzip $1          ;;
+      *.war)            unzip $1          ;;
+      *.Z)              uncompress $1     ;;
+      *)                echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+# FileSearch
+f() { find . -iname "*$1*" ${@:2} }
+r() { grep "$1" ${@:2} -R . }
+
+#mkdir and cd
+take() { mkdir -p "$@" && cd "$_"; }
+
+# A recursive, case-insensitive grep that excludes binary files
+dgrep() {
+  grep -iR "$@" * | grep -v "Binary"
+}
+
+# A recursive, case-insensitive grep that excludes binary files and returns only unique filenames
+dfgrep() {
+  grep -iR "$@" * | grep -v "Binary" | sed 's/:/ /g' | awk '{ print $1 }' | sort | uniq
+}
+
+# Process grep
+psgrep() {
+  if [ ! -z $1 ] ; then
+    echo "Grepping for processes matching $1..."
+    ps aux | grep $1 | grep -v grep
+  else
+    echo "!! Need name to grep for"
+  fi
+}
+
+# Kills any process that matches a regexp passed to it
+killit() {
+  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
+
+# Syntax-highlight JSON strings or files
+# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
+json() {
+  if [ -t 0 ]; then # argument
+    python -mjson.tool <<< "$*" | pygmentize -l javascript;
+  else # pipe
+    python -mjson.tool | pygmentize -l javascript;
+  fi;
+}
+
+# XML syntax highlighting
+xml() {
+  if [ -t 0 ]; then # argument
+    xmllint --format - <<< "$*" | pygmentize -l xml;
+  else # pipe
+    xmllint --format - | pygmentize -l xml;
+  fi;
+}
+
+# HTML syntax highlighting
+html() {
+  if [ -t 0 ]; then # argument
+    xmllint --html - <<< "$*" | pygmentize -l html;
+  else # pipe
+    xmllint --html - | pygmentize -l html;
+  fi;
+}
+
+# Find who's using a specific port
+whoport() {
+  lsof -i :$1
+}
+
+# User python simple http server to serve a directory
+servethis() {
+  local port=$1
+  if [ -z "$port" ]; then
+    port=8080
+  fi
+
+  python -m SimpleHTTPServer $port
+}
+
+# Combine fzf and autojump functionality
+j() {
+    if [[ "$#" -ne 0 ]]; then
+        cd $(autojump $@)
+        return
+    fi
+    cd "$(autojump -s | sed '/_____/Q; s/^[0-9,.:]*\s*//' |  fzf --height 40% --reverse --inline-info)"
+}
+
+git_sparse_clone() {
+    rurl="$1" localdir="$2" && shift 2
+
+    mkdir -p "$localdir"
+    cd "$localdir"
+
+    git init
+    git remote add -f origin "$rurl"
+
+    git config core.sparseCheckout true
+
+    # Loops over remaining args
+    for i; do
+        echo "$i" >> .git/info/sparse-checkout
+    done
+
+    git pull origin master
+}

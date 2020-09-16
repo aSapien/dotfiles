@@ -1,0 +1,114 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: yes
+configure_sudoers: no
+configure_terminal: no
+configure_osx: no
+
+dotfiles_repo: git@github.com:aSapien/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/projects/dotfiles
+dotfiles_files:
+  - .gitignore
+  - .gitconfig
+  - .localconfig.fish
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - ammonite-repl # Scala REPL
+  - autojump      # Filesystem navigation
+  - bat           # A better alrernative to `cat`, with syntax, etc.
+  - dive          # Docker image explorer
+  - exa           # Colorized `ls`
+  - fd            # A better alternative to `find` 
+  - fish          # Fish shell
+  - fzf           # Fuzzy Filesystem navigation
+  - git
+  - go
+  - httpie        # Like cURL but with colored output
+  - iproute2mac   # iproute2 instead of net-tools (ip instead of ifconfig)
+  - jq            # json maniulations for the terminal
+  - kafka
+  - mas           # Mac App Store - CLI
+  - openssl
+  - poetry        # Python environment management
+  - scala
+  - skhd          # A hotkey daemon, complemetary to `yabai`
+  - ssh-copy-id   # copy public key to remote machine's authorized_keys
+  - tldr          # Explain commands and common
+  - tmux          # Terminal multiplexer
+  - tree          # View directory tree
+  - wget          
+  - yabai         # MacOS Tiling window manager
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - homebrew/cask-versions
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - alfred
+  - bitwarden
+  - brave-browser
+  - dash
+  - docker
+  - flux
+  - google-cloud-sdk
+  - jetbrains-toolbox
+  - iterm2
+  - java
+  - karabiner-elements
+  - kindle
+  - ngrok
+  - nomachine
+  - notion
+  - obsidian
+  - odrive
+  - paw
+  - slack
+  - spotify
+  - steam
+  - stremio
+  - sublime-text
+  - telegram
+  - the-unarchiver
+  - ubersicht             # MacOS widgets framework
+  - vagrant
+  - virtualbox
+  - virtualbox-extension-pack
+  - vlc
+  - vscodium
+  - wireshark
+  - zoomus
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+osx_script: "~/.osx --no-restart"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+  #   version: "^8.1" # default: N/A
+gem_packages: []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+  #   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+  #   version: "^2.6" # default: N/A
+pip_packages: []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []

@@ -1,0 +1,35 @@
+[core]
+	quotepath = false
+	excludesfile = ~/.git/.gitignore
+	autocrlf = input
+	editor = vim
+[user]
+	name = Dima Ryskin
+	useConfigOnly = true
+	email = dima.ryskin@gmail.com
+[merge]
+  tool = intellij
+[mergetool "intellij"]
+  cmd = /Applications/IntelliJ\\ IDEA.app/Contents/MacOS/idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+  trustExitCode = true
+[diff]
+  tool = intellij
+[difftool "intellij"]
+  cmd = /Applications/IntelliJ\\ IDEA.app/Contents/MacOS/idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+[github]
+	user = aSapien
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[push]
+	default = simple
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[difftool "bc3"]
+	trustExitCode = true
+[difftool]
+	prompt = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/
