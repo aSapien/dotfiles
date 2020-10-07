@@ -12,6 +12,8 @@ dotfiles_repo_local_destination: ~/projects/dotfiles
 dotfiles_files:
   - .gitignore
   - .gitconfig
+  - .skhdrc
+  - .yabairc
   - .localconfig.fish
 
 homebrew_installed_packages:
@@ -34,6 +36,7 @@ homebrew_installed_packages:
   - openssl
   - poetry        # Python environment management
   - scala
+  - scc           # A tool similar to cloc & loc. For counting lines of code, blank, etc, by language.
   - skhd          # A hotkey daemon, complemetary to `yabai`
   - ssh-copy-id   # copy public key to remote machine's authorized_keys
   - tldr          # Explain commands and common
@@ -49,6 +52,7 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - homebrew/cask-versions/adoptopenjdk8
   - alfred
   - bitwarden
   - brave-browser
@@ -56,6 +60,7 @@ homebrew_cask_apps:
   - docker
   - flux
   - google-cloud-sdk
+  - grandperspective      # Free/Occupied Space Disk Visualizer
   - jetbrains-toolbox
   - iterm2
   - java

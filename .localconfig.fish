@@ -40,3 +40,4 @@ alias kn='kubectl config set-context --current --namespace '
 # Usage: `kgp premium-offerings`
 alias kgp='kubectl get pods -o wide | grep '
 
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
