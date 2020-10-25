@@ -28,6 +28,7 @@ homebrew_installed_packages:
   - fzf           # Fuzzy Filesystem navigation
   - git
   - go
+  - hashicorp/tap/terraform # Terraform
   - httpie        # Like cURL but with colored output
   - iproute2mac   # iproute2 instead of net-tools (ip instead of ifconfig)
   - jq            # json maniulations for the terminal
@@ -49,6 +50,7 @@ homebrew_taps:
   - homebrew/core
   - homebrew/cask
   - homebrew/cask-versions
+  - hashicorp/tap
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
