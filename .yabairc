@@ -6,6 +6,16 @@
 #
 
 
+# Load Script Additions for BigSur, as per instructions:
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)/c16d7804fc1093129516acedd507b5f838d34192#macos-big-sur---automatically-load-scripting-addition-on-startup
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# Start SKHD in the background. Work around issues:
+# https://github.com/koekeishiya/skhd/issues/103
+# https://github.com/koekeishiya/skhd/issues/139
+skhd & 
+
 # ====== Variables =============================
 
 gaps_top="4"

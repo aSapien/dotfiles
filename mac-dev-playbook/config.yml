@@ -21,12 +21,14 @@ homebrew_installed_packages:
   - ammonite-repl # Scala REPL
   - autojump      # Filesystem navigation
   - bat           # A better alrernative to `cat`, with syntax, etc.
+  - bitwarden-cli # Password manager CLI
   - dive          # Docker image explorer
   - exa           # Colorized `ls`
   - fd            # A better alternative to `find` 
   - fish          # Fish shell
   - fzf           # Fuzzy Filesystem navigation
   - git
+  - git-delta     # Terminal Diff for git
   - go
   - hashicorp/tap/terraform # Terraform
   - httpie        # Like cURL but with colored output
@@ -40,9 +42,11 @@ homebrew_installed_packages:
   - scc           # A tool similar to cloc & loc. For counting lines of code, blank, etc, by language.
   - skhd          # A hotkey daemon, complemetary to `yabai`
   - ssh-copy-id   # copy public key to remote machine's authorized_keys
+  - terraform_landscape # Fancy diff for Terraform
   - tldr          # Explain commands and common
   - tmux          # Terminal multiplexer
   - tree          # View directory tree
+  - watch         # Watch for changes in output for a repeatedly executed command
   - wget          
   - yabai         # MacOS Tiling window manager
 

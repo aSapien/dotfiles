@@ -3,19 +3,11 @@
 	excludesfile = ~/.git/.gitignore
 	autocrlf = input
 	editor = vim
+  pager = delta
 [user]
 	name = Dima Ryskin
 	useConfigOnly = true
 	email = dima.ryskin@gmail.com
-[merge]
-  tool = intellij
-[mergetool "intellij"]
-  cmd = /Applications/IntelliJ\\ IDEA.app/Contents/MacOS/idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
-  trustExitCode = true
-[diff]
-  tool = intellij
-[difftool "intellij"]
-  cmd = /Applications/IntelliJ\\ IDEA.app/Contents/MacOS/idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
 [github]
 	user = aSapien
 [filter "media"]
@@ -27,9 +19,15 @@
 	rebase = true
 [rebase]
 	autoStash = true
-[difftool "bc3"]
-	trustExitCode = true
-[difftool]
-	prompt = false
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[delta]
+  decorations = true
+  line-numbers = true
+  side-by-side = true
+  colorMoved = true
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended
+[interactive]
+  diffFilter = delta --color-only
