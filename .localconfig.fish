@@ -41,6 +41,3 @@ alias kn='kubectl config set-context --current --namespace '
 alias kgp='kubectl get pods -o wide | grep '
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

@@ -31,6 +31,7 @@ homebrew_installed_packages:
   - git-delta     # Terminal Diff for git
   - go
   - hashicorp/tap/terraform # Terraform
+  - hugo          # Static site generator
   - httpie        # Like cURL but with colored output
   - iproute2mac   # iproute2 instead of net-tools (ip instead of ifconfig)
   - jq            # json maniulations for the terminal
@@ -67,6 +68,7 @@ homebrew_cask_apps:
   - flux
   - google-cloud-sdk
   - grandperspective      # Free/Occupied Space Disk Visualizer
+  - hammerspoon           # MacOS Lua automation scripting
   - jetbrains-toolbox
   - iterm2
   - java
@@ -116,7 +118,8 @@ npm_packages: []
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-pip_packages: []
+pip_packages: 
+  - name: graphtage
   # - name: mkdocs
   #   state: present # present/absent/latest, default: present
   #   version: "0.16.3" # default: N/A
