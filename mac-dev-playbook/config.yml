@@ -36,20 +36,19 @@ homebrew_installed_packages:
   - iproute2mac   # iproute2 instead of net-tools (ip instead of ifconfig)
   - jq            # json maniulations for the terminal
   - kafka
+  - koekeishiya/formulae/skhd          # A hotkey daemon, complemetary to `yabai`
+  - koekeishiya/formulae/yabai         # MacOS Tiling window manager
   - mas           # Mac App Store - CLI
   - openssl
   - poetry        # Python environment management
   - scala
   - scc           # A tool similar to cloc & loc. For counting lines of code, blank, etc, by language.
-  - skhd          # A hotkey daemon, complemetary to `yabai`
   - ssh-copy-id   # copy public key to remote machine's authorized_keys
-  - terraform_landscape # Fancy diff for Terraform
   - tldr          # Explain commands and common
   - tmux          # Terminal multiplexer
   - tree          # View directory tree
   - watch         # Watch for changes in output for a repeatedly executed command
   - wget          
-  - yabai         # MacOS Tiling window manager
 
 homebrew_taps:
   - homebrew/core
@@ -62,7 +61,6 @@ homebrew_cask_apps:
   - homebrew/cask-versions/adoptopenjdk8
   - alfred
   - bitwarden
-  - brave-browser
   - dash
   - docker
   - flux
@@ -71,30 +69,25 @@ homebrew_cask_apps:
   - hammerspoon           # MacOS Lua automation scripting
   - jetbrains-toolbox
   - iterm2
-  - java
   - karabiner-elements
   - kindle
   - ngrok
-  - nomachine
   - notion
-  - obsidian
   - odrive
   - paw
   - slack
   - spotify
   - steam
   - stremio
-  - sublime-text
   - telegram
   - the-unarchiver
-  - ubersicht             # MacOS widgets framework
   - vagrant
   - virtualbox
   - virtualbox-extension-pack
+  - visual-studio-code
   - vlc
-  - vscodium
   - wireshark
-  - zoomus
+  - zoom
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
