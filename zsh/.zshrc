@@ -1,40 +1,21 @@
 #!/bin/zsh
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/dimaryskin/.oh-my-zsh"
 
-# Github hub
-eval "$(hub alias -s)"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# Activate `zsh-completions`
-fpath=(/usr/local/share/zsh-completions $fpath)
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
 
 # Initialize autojump (https://github.com/wting/autojump)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-# Initialize ZShell syntax highlighting (https://github.com/Homebrew/homebrew-core/blob/master/Formula/zsh-syntax-highlighting.rb)
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Zsh completions for Google Cloud SDK (installed with brew cask)
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
-# Prezto: Load
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# Prezto: Disable Correction suggestions
-unsetopt CORRECT
-
-# NVM config and start
-    export NVM_DIR="$HOME/.nvm"
-    # This loads nvm
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  
-    # This loads nvm bash_completion
-    [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  
-
-
-# Load NIX environment
-[ -s "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-
-# Load BazelBuild environment
-[ -s "$HOME/.bazelenv" ] && . "$HOME/.bazelenv"
