@@ -41,3 +41,8 @@ alias kn='kubectl config set-context --current --namespace '
 alias kgp='kubectl get pods -o wide | grep '
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+
+# RVM 
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+# Uncomment if working with chef-repo a lot
+# rvm default

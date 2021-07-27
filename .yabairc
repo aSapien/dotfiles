@@ -14,7 +14,8 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # Start SKHD in the background. Work around issues:
 # https://github.com/koekeishiya/skhd/issues/103
 # https://github.com/koekeishiya/skhd/issues/139
-skhd & 
+# https://github.com/koekeishiya/skhd/issues/42 Fix slow startup
+SHELL=/bin/sh skhd &
 
 # ====== Variables =============================
 
