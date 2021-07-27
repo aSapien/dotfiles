@@ -62,9 +62,8 @@ homebrew_cask_apps:
   - homebrew/cask-versions/adoptopenjdk8
   - alfred
   - bitwarden
-  - dash
+  - dash5
   - docker
-  - flux
   - google-cloud-sdk
   - grandperspective      # Free/Occupied Space Disk Visualizer
   - hammerspoon           # MacOS Lua automation scripting
@@ -84,6 +83,7 @@ homebrew_cask_apps:
   - stremio
   - telegram
   - the-unarchiver
+  - ubersicht
   - vagrant
   - virtualbox
   - virtualbox-extension-pack
