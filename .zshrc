@@ -13,7 +13,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,3 +33,6 @@ export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 
 source "$HOME/.zshrc-aliases"
 source "$HOME/.zshrc-functions"
+
+export PATH="$PATH:$HOME/.local/bin"
+source "$HOME/.bazelenv"
