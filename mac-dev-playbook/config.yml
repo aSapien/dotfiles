@@ -15,6 +15,9 @@ dotfiles_files:
   - .skhdrc
   - .yabairc
   - .localconfig.fish
+  - zsh/.zshrc
+  - zsh/.zshrc-aliases
+  - zsh/.zshrc-functions
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
