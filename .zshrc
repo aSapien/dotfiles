@@ -30,3 +30,6 @@ source /Users/$USER/.bazelenv
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 # Uncomment if working with chef-repo a lot
 # rvm default
+
+source "$HOME/.zshrc-aliases"
+source "$HOME/.zshrc-functions"
