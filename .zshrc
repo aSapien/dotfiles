@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # Initialize FNM
-eval "$(fnm env)" && fnm completions --shell zsh
+eval "$(fnm env)"
 
 ##### BAZEL #####
 source /Users/$USER/.bazelenv
