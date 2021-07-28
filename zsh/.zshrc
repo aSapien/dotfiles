@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dimaryskin/.oh-my-zsh"
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -19,3 +19,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Initialize autojump (https://github.com/wting/autojump)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# Initialize FNM
+eval "$(fnm env)" && fnm completions --shell zsh
+
+##### BAZEL #####
+source /Users/$USER/.bazelenv
+
+# RVM 
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+# Uncomment if working with chef-repo a lot
+# rvm default

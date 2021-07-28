@@ -96,7 +96,7 @@ servethis() {
     port=8080
   fi
 
-  python -m SimpleHTTPServer $port
+  python3 -m http.server $port
 }
 
 # Combine fzf and autojump functionality

@@ -26,6 +26,7 @@ homebrew_installed_packages:
   - exa           # Colorized `ls`
   - fd            # A better alternative to `find` 
   - fish          # Fish shell
+  - fnm           # Fast NodeJS version manager
   - fzf           # Fuzzy Filesystem navigation
   - git
   - git-delta     # Terminal Diff for git

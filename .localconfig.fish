@@ -10,6 +10,7 @@ alias kalistart='aws ec2 start-instances --instance-ids i-0dff7a7d11250ddd7 && a
 
 # fnm
 fnm env --multi | source
+fnm completions --shell fish
 
 ##### AUTOJUMP ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
@@ -22,7 +23,7 @@ export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 ##### BAZEL #####
 
-source /Users/dimaryskin/.bazelenv
+source /Users/$USER/.bazelenv
 
 ##### ALIASES #####
 
