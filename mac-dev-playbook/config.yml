@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - mas           # Mac App Store - CLI
   - openssl
   - poetry        # Python environment management
+  - pyenv         # Python version manager
   - scala
   - scc           # A tool similar to cloc & loc. For counting lines of code, blank, etc, by language.
   - ssh-copy-id   # copy public key to remote machine's authorized_keys

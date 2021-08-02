@@ -37,17 +37,15 @@ source "$HOME/.zshrc-functions"
 export PATH="$PATH:$HOME/.local/bin"
 source "$HOME/.bazelenv"
 
-### Start: Fix slowness of pastes with zsh-syntax-highlighting.zsh
-# Source: https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
+# Fix slowness of pastes with zsh-syntax-highlighting.zsh
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-### End: Fix slowness of pastes with zsh-syntax-highlighting.zsh
+# Ruby / RVM
+source $HOME/.rvm/scripts/rvm
+export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
+# Python / Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
