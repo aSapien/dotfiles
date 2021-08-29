@@ -23,6 +23,7 @@ homebrew_installed_packages:
   # - ansible # Installed via Pip.
   - ammonite-repl # Scala REPL
   - autojump      # Filesystem navigation
+  - awscli        # AWS CLI
   - bat           # A better alrernative to `cat`, with syntax, etc.
   - bitwarden-cli # Password manager CLI
   - dive          # Docker image explorer
@@ -65,6 +66,7 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - homebrew/cask-versions/adoptopenjdk8
+  - openjdk@11
   - alfred
   - bitwarden
   - dash5
@@ -73,6 +75,7 @@ homebrew_cask_apps:
   - grandperspective      # Free/Occupied Space Disk Visualizer
   - hammerspoon           # MacOS Lua automation scripting
   - jetbrains-toolbox
+  - joplin
   - iterm2
   - karabiner-elements
   - kindle
