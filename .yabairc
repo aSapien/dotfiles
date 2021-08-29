@@ -24,11 +24,11 @@ SHELL=/bin/sh skhd &
 
 # ====== Variables =============================
 
-gaps_top="30"
-gaps_bottom="4"
-gaps_left="4"
-gaps_right="4"
-gaps_inner="4"
+gaps_top="28"
+gaps_bottom="0"
+gaps_left="0"
+gaps_right="0"
+gaps_inner="0"
 
 normal_border_color="010101"
 focused_border_color="808080"
