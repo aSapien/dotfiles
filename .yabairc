@@ -24,7 +24,7 @@ SHELL=/bin/sh skhd &
 
 # ====== Variables =============================
 
-gaps_top="28"
+gaps_top="0"
 gaps_bottom="0"
 gaps_left="0"
 gaps_right="0"
@@ -65,7 +65,7 @@ yabai -m config auto_balance                off
 yabai -m config window_border               off
 yabai -m config window_border_width         2
 yabai -m config active_window_border_color  "0xE0${focused_border_color}"
-yabai -m config insert_window_border_color  "0xE0${preselect_border_color}"
+yabai -m config insert_feedback_color  "0xE0${preselect_border_color}"
 yabai -m config normal_window_border_color  "0x00${normal_border_color}"
 
 # ====== List of rules =========================

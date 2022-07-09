@@ -43,6 +43,7 @@ homebrew_installed_packages:
   - kafka
   - koekeishiya/formulae/skhd          # A hotkey daemon, complemetary to `yabai`
   - koekeishiya/formulae/yabai         # MacOS Tiling window manager
+  - krew
   - kubectx       # Easy switch between K8s contexts and namespaces
   - mas           # Mac App Store - CLI
   - openssl

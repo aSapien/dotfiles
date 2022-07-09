@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 #!/bin/zsh
 
 # Path to your oh-my-zsh installation.
@@ -49,3 +51,25 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+# Go
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
+
+# K8s (Comment out, slows down terminal)
+# GNUBINS="$(find /usr/local/opt -type d -follow -name gnubin -print)"
+# for bindir in ${GNUBINS[@]}
+# do
+#   export PATH=$bindir:$PATH
+# done
+# export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
+# End k8s
+
+
+
+# JAVA
+export JAVA_HOME="/usr/local/opt/openjdk@11"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
