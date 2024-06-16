@@ -1,8 +1,8 @@
-#
-# CONFIG STOLEN FROM:
+#!/usr/bin/env sh
+
+# CONFIG INSPIRED BY:
 # https://github.com/Julian-Heng/chunkwm-yabai-config/tree/2b069b2f131c00fedf6b6f4753be2cc134cf81d4
 #
-
 
 # Navigation Focus
 alt - j : yabai -m window --focus west
@@ -21,8 +21,6 @@ alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
-alt - q: yabai -m space --focus 11
-alt - w: yabai -m space --focus 12
 
 # Moving windows
 shift + alt - j : yabai -m window --warp west
@@ -44,8 +42,6 @@ shift + alt - 7 : yabai -m window --space 7 && yabai -m space --focus 7
 shift + alt - 8 : yabai -m window --space 8 && yabai -m space --focus 8
 shift + alt - 9 : yabai -m window --space 9 && yabai -m space --focus 9
 shift + alt - 0 : yabai -m window --space 10 && yabai -m space --focus 10
-shift + alt - 0x1B : yabai -m window --space 11 && yabai -m space --focus 11
-shift + alt - 0x18 : yabai -m window --space 12 && yabai -m space --focus 12
 
 # Resize windows
 lctrl + alt - j : \

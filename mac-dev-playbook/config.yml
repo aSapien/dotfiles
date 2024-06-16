@@ -69,6 +69,8 @@ homebrew_cask_apps:
   - homebrew/cask-versions/adoptopenjdk8
   - openjdk@11
   - alfred
+  - anythingllm
+  - arc
   - bitwarden
   - dash5
   - docker

@@ -1,75 +1,65 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
-#!/bin/zsh
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/$USER/.oh-my-zsh"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# Initialize Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting kubectl)
-
-source $ZSH/oh-my-zsh.sh
-
-# Initialize autojump (https://github.com/wting/autojump)
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# Initialize Zoxide (https://github.com/ajeetdsouza/zoxide)
+eval "$(zoxide init zsh)"
 
 # Initialize FNM
 eval "$(fnm env)"
 
-##### BAZEL #####
-source /Users/$USER/.bazelenv
+# Bazel environment
+source "$HOME/.bazelenv"
 
-# RVM 
-export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
-# Uncomment if working with chef-repo a lot
-# rvm default
 
+# ZSH aliases and functions
 source "$HOME/.zshrc-aliases"
 source "$HOME/.zshrc-functions"
 
 export PATH="$PATH:$HOME/.local/bin"
-source "$HOME/.bazelenv"
 
-# Fix slowness of pastes with zsh-syntax-highlighting.zsh
-zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+# # Ruby / RVM
+# eval "$(rbenv init - zsh)"
+# export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
-# Ruby / RVM
-source $HOME/.rvm/scripts/rvm
-export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
-
-# Python / Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# # Python / Pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
 # Go
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 
-# K8s (Comment out, slows down terminal)
-# GNUBINS="$(find /usr/local/opt -type d -follow -name gnubin -print)"
-# for bindir in ${GNUBINS[@]}
-# do
-#   export PATH=$bindir:$PATH
-# done
-# export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
-# End k8s
-
-
-
 # JAVA
-export JAVA_HOME="/usr/local/opt/openjdk@11"
+# have openjdk@11 first in your PATH
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
 export PATH="$JAVA_HOME/bin:$PATH"
+#For compilers to find openjdk@11 you may need to set:
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+
+# Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions kubectl)
+source $ZSH/oh-my-zsh.sh
+
+# Fix slowness of pastes with zsh-syntax-highlighting.zsh
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

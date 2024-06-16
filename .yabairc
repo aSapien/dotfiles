@@ -1,26 +1,14 @@
 #!/usr/bin/env sh
 
-#
-# CONFIG STOLEN FROM:
+# CONFIG INSPIRED BY:
 # https://github.com/Julian-Heng/chunkwm-yabai-config/tree/2b069b2f131c00fedf6b6f4753be2cc134cf81d4
-#
+# https://d12frosted.io/posts/2022-04-23-yabai-spaces.html
 
 
-# Load Script Additions for BigSur, as per instructions:
-# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)/c16d7804fc1093129516acedd507b5f838d34192#macos-big-sur---automatically-load-scripting-addition-on-startup
+# ====== Load Scripting Additions ==============
+
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
-# Start SKHD in the background. Work around issues:
-# https://github.com/koekeishiya/skhd/issues/103
-# https://github.com/koekeishiya/skhd/issues/139
-# https://github.com/koekeishiya/skhd/issues/42 Fix slow startup
-SHELL=/bin/sh skhd &
-
-# Hide MacOS Dock "forever":
-# defaults write com.apple.dock autohide -bool true && killall Dock
-# defaults write com.apple.dock autohide-delay -float 1000 && killall Dock
-# defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock
 
 # ====== Variables =============================
 
@@ -51,6 +39,7 @@ yabai -m config mouse_modifier              fn
 yabai -m config mouse_action1               move
 yabai -m config mouse_action2               resize
 
+yabai -m config window_placement            second_child
 yabai -m config window_topmost              off
 yabai -m config window_opacity              off
 yabai -m config window_shadow               float
@@ -68,7 +57,55 @@ yabai -m config active_window_border_color  "0xE0${focused_border_color}"
 yabai -m config insert_feedback_color  "0xE0${preselect_border_color}"
 yabai -m config normal_window_border_color  "0x00${normal_border_color}"
 
-# ====== List of rules =========================
+# ====== Initialization ========================
+
+# Clear extra spaces
+
+for _ in $(yabai -m query --spaces | jq '.[].index | select(. > 10)'); do
+  yabai -m space --destroy 11
+done
+
+# Define space labels
+setup_space() {
+  local idx="$1"
+  local name="$2"
+  local space=
+  echo "setup space $idx : $name"
+
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+
+  yabai -m space "$idx" --label "$name"
+}
+
+setup_space 1 web
+setup_space 2 slack
+setup_space 3 neovim
+setup_space 4 code
+setup_space 5 intellij
+setup_space 6 spotify
+setup_space 7 llm
+setup_space 8 notes
+setup_space 9 misc1
+setup_space 10 misc2
+
+# ====== Assign to space =======================
+
+yabai -m rule --add app="^Arc$" space=^1
+yabai -m rule --add app="^Slack$" space=2
+yabai -m rule --add app="^Telegram$" space=2
+yabai -m rule --add app="^WezTerm$" space=3
+yabai -m rule --add app="^Code$" space=4
+yabai -m rule --add app="^IntelliJ IDEA$" space=5
+yabai -m rule --add app="^Spotify$" space=6
+yabai -m rule --add app="^AnythingLLM$" space=7
+yabai -m rule --add app="^Notion$" space=8
+yabai -m rule --add app="^LogSeq$" space=8
+
+
+# ====== Do not manage =========================
 
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
@@ -76,45 +113,11 @@ yabai -m rule --add label="System Preferences" app="^System Preferences$" manage
 yabai -m rule --add label="System Information" app="^System Information$" manage=off
 yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
-yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="NoMachine" app="^NoMachine$" manage=off
-
-
-#### DEFAULT EXAMPLE ####
-# #!/usr/bin/env sh
-
-# # global settings
-# yabai -m config mouse_follows_focus          off
-# yabai -m config focus_follows_mouse          off
-# yabai -m config window_placement             second_child
-# yabai -m config window_topmost               off
-# yabai -m config window_shadow                on
-# yabai -m config window_opacity               off
-# yabai -m config window_opacity_duration      0.0
-# yabai -m config active_window_opacity        1.0
-# yabai -m config normal_window_opacity        0.90
-# yabai -m config window_border                off
-# yabai -m config window_border_width          6
-# yabai -m config active_window_border_color   0xff775759
-# yabai -m config normal_window_border_color   0xff555555
-# yabai -m config insert_feedback_color        0xffd75f5f
-# yabai -m config split_ratio                  0.50
-# yabai -m config auto_balance                 off
-# yabai -m config mouse_modifier               fn
-# yabai -m config mouse_action1                move
-# yabai -m config mouse_action2                resize
-
-# # general space settings
-# yabai -m config layout                       bsp
-# yabai -m config top_padding                  06
-# yabai -m config bottom_padding               06
-# yabai -m config left_padding                 06
-# yabai -m config right_padding                06
-# yabai -m config window_gap                   03
-
-# echo "yabai configuration loaded.."
+yabai -m rule --add label="IntelliJ Settings" app="^IntelliJ IDEA$" title="^(Project Structure|Settings|Commit Changes|Licenses)$" manage=off
+yabai -m rule --add label="IntelliJ Diff" app="^IntelliJ IDEA$" title="\\[Changes\\]" manage=off
